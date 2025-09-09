@@ -7,7 +7,7 @@
                 <div class="tw-mb-4">
                     <ModelViewer :code="code" @update:code="code = $event"
                         v-if="warehouse.model3D && warehouse.model3D.length > 0"
-                        :src="`https://industrial-render-api.onrender.com/${warehouse.model3D[0].url}`" :click="true" :logLimit="logLimit"
+                        :src="`https://industrial-render-api.onrender.com${warehouse.model3D[0].url}`" :click="true" :logLimit="logLimit"
                         :machineDanger="machinDanger" />
                 </div>
             </div>
@@ -92,7 +92,7 @@
                     <div v-if="machine">
                         <p><strong>type:</strong> {{ machine.type }}</p>
                         <ModelViewer v-if="machine.object && machine.object.length > 0" :code="code"
-                            :src="`https://industrial-render-api.onrender.com/${machine.object[0].url}`" :click="false"
+                            :src="`https://industrial-render-api.onrender.com${machine.object[0].url}`" :click="false"
                             :logLimit="logLimit" />
                     </div>
                     <div>
@@ -120,7 +120,7 @@
                 <div class="tw-mb-4">
                     <ModelViewer :code="code" @update:code="code = $event"
                         v-if="warehouse.model3D && warehouse.model3D.length > 0"
-                        :src="`https://industrial-render-api.onrender.com/${warehouse.model3D[0].url}`" :click="true" :logLimit="logLimit"
+                        :src="`https://industrial-render-api.onrender.com${warehouse.model3D[0].url}`" :click="true" :logLimit="logLimit"
                         :machineDanger="machinDanger" />
                 </div>
             </div>
@@ -207,7 +207,7 @@
                         <div v-if="machine">
                             <p><strong>type:</strong> {{ machine.type }}</p>
                             <ModelViewer v-if="machine.object && machine.object.length > 0" :code="code"
-                                :src="`https://industrial-render-api.onrender.com/${machine.object[0].url}`" :click="false"
+                                :src="`https://industrial-render-api.onrender.com${machine.object[0].url}`" :click="false"
                                 :logLimit="logLimit" />
                         </div>
                         <div>
