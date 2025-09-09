@@ -54,7 +54,7 @@
                 <v-row>
                     <v-col cols="9">
                         <ModelMachineViewer v-if="machine.object.length > 0"
-                            :modelUrl="`http://localhost:1337${machine.object[0]?.url}`" :danger="logLimit"
+                            :modelUrl="`https://industrial-render-api.onrender.com/${machine.object[0]?.url}`" :danger="logLimit"
                             :isTest="false" />
                     </v-col>
                     <v-col cols="3">
@@ -75,7 +75,7 @@
                         <div class="tw-mt-4">
                             <div class="tw-mb-4">
                                 <ModelMachineViewer v-if="machine.object.length > 0"
-                                    :modelUrl="`http://localhost:1337${machine.object[0]?.url}`" :danger="danger"
+                                    :modelUrl="`https://industrial-render-api.onrender.com/${machine.object[0]?.url}`" :danger="danger"
                                     :isTest="true" />
                             </div>
                             <div class="tw-flex tw-gap-2 tw-w-full">
@@ -226,7 +226,7 @@
                 <v-row>
                     <v-col cols="12">
                         <ModelMachineViewer v-if="machine.object.length > 0"
-                            :modelUrl="`http://localhost:1337${machine.object[0]?.url}`" :danger="logLimit"
+                            :modelUrl="`https://industrial-render-api.onrender.com/${machine.object[0]?.url}`" :danger="logLimit"
                             :isTest="false" />
                     </v-col>
                 </v-row>
@@ -250,7 +250,7 @@
                             <div class="tw-mt-4">
                                 <div class="tw-mb-4">
                                     <ModelMachineViewer v-if="machine.object.length > 0"
-                                        :modelUrl="`http://localhost:1337${machine.object[0]?.url}`" :danger="danger"
+                                        :modelUrl="`https://industrial-render-api.onrender.com/${machine.object[0]?.url}`" :danger="danger"
                                         :isTest="true" />
                                 </div>
                                 <div class="tw-flex tw-flex-col tw-gap-2 tw-w-full">
@@ -532,7 +532,7 @@ onMounted(async () => {
     }
     const loader = new GLTFLoader()
     if (machine.value) {
-        loader.load(`http://localhost:1337${machine.value.object[0].url}`, (gltf) => {
+        loader.load(`https://industrial-render-api.onrender.com/${machine.value.object[0].url}`, (gltf) => {
             const extracted: THREE.Object3D[] = []
             gltf.scene.traverse((child) => {
                 if ((child as THREE.Mesh).isMesh) {
