@@ -1,0 +1,23 @@
+{
+    "app": {
+        "welcome": "Bem-vindo ao Industry Render",
+        "title": "Industry Render",
+        "description": "Aplicação de renderização de máquinas industriais em 3d e controlo administrativo sobre elas.",
+        "version": "1.0.0"
+    },
+    "auth": {
+        "login": "Entrar",
+        "logout": "Sair",
+        "register": "Registrar",
+        "forgot_password": "Esqueci-me da minha password",
+        "reset_password": "Redefinir password",
+        "email": "Email",
+        "password": "Password",
+        "confirm_password": "Confirmar password",
+        "remember_me": "Lembrar-me",
+        "send_reset_link": "Enviar link de redefinição",
+        "reset_link_sent": "Link de redefinição enviado para seu email.",
+        "password_reset_successful": "Senha redefinida com sucesso.",
+        "invalid_credentials": "Credenciais inválidas, por favor tente novamente."
+    }
+}
