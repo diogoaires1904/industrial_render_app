@@ -33,7 +33,7 @@ export default () => {
                 manifest: {
                     background_color: appColor,
                     name: appName,
-                    short_name: 'Agrovila',
+                    short_name: 'IndRender',
                     orientation: 'portrait',
                     display: 'standalone',
                     theme_color: appColor,
@@ -41,23 +41,23 @@ export default () => {
                     handle_links: 'auto',
                     icons: [
                         {
-                            src: 'pwa-64x64.png',
+                            src: 'industry-render-logo.png',
                             sizes: '64x64',
                             type: 'image/png',
                         },
                         {
-                            src: 'pwa-192x192.png',
+                            src: 'industry-render-logo.png',
                             sizes: '192x192',
                             type: 'image/png',
                         },
                         {
-                            src: 'pwa-512x512.png',
+                            src: 'industry-render-logo.png',
                             sizes: '512x512',
                             type: 'image/png',
                             purpose: 'any',
                         },
                         {
-                            src: 'maskable-icon-512x512.png',
+                            src: 'industry-render-logo.png',
                             sizes: '512x512',
                             type: 'image/png',
                             purpose: 'maskable',
