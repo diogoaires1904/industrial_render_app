@@ -55,7 +55,7 @@
                     <v-col cols="9">
                         <ModelMachineViewer v-if="machine.object.length > 0"
                             :modelUrl="`https://industrial-render-api.onrender.com${machine.object[0]?.url}`" :danger="logLimit"
-                            :isTest="false" />
+                            :isTest="false" :stop="false"/>
                     </v-col>
                     <v-col cols="3">
                         <div class="tw-flex tw-flex-col tw-gap-2">
@@ -76,7 +76,7 @@
                             <div class="tw-mb-4">
                                 <ModelMachineViewer v-if="machine.object.length > 0"
                                     :modelUrl="`https://industrial-render-api.onrender.com${machine.object[0]?.url}`" :danger="danger"
-                                    :isTest="true" />
+                                    :isTest="true" :initTest="initTest" :rpm="rpmTest" :stop="stop"/>
                             </div>
                             <div class="tw-flex tw-gap-2 tw-w-full">
                                 <div class="tw-w-full">
@@ -130,7 +130,7 @@
                                         @click="testType == 'rotations' ? test(rpm, testType) : test(energy, testType)"
                                         class="tw-w-24">Iniciar
                                         Teste</v-btn>
-                                    <v-btn color="secondary" @click="drawer = false" class="tw-w-24">Parar Teste</v-btn>
+                                    <v-btn color="secondary" @click="stop = true" class="tw-w-24">Parar Teste</v-btn>
                                 </div>
                             </v-row>
                         </div>
@@ -183,8 +183,8 @@
                                 Energy
                             </v-card-title>
                             <v-card-text>
-                                <v-data-table items-per-page="5" :headers="heardersEnergy" :items="logsEnergy"
-                                    class="elevation-1">
+                                <v-data-table flat items-per-page="5" :headers="heardersEnergy" :items="logsEnergy"
+                                    class="tw-w-full">
                                     <template #item.date="{ item }">
                                         {{ new Date(item.createdAt).toLocaleDateString() }}
                                     </template>
@@ -205,8 +205,8 @@
                                 Rotations
                             </v-card-title>
                             <v-card-text>
-                                <v-data-table items-per-page="5" :headers="heardersRotation" :items="logsRotation"
-                                    class="elevation-1">
+                                <v-data-table flat items-per-page="5" :headers="heardersRotation" :items="logsRotation"
+                                    class="tw-w-full">
                                     <template #item.date="{ item }">
                                         {{ new Date(item.createdAt).toLocaleDateString() }}
                                     </template>
@@ -227,7 +227,7 @@
                     <v-col cols="12">
                         <ModelMachineViewer v-if="machine.object.length > 0"
                             :modelUrl="`https://industrial-render-api.onrender.com${machine.object[0]?.url}`" :danger="logLimit"
-                            :isTest="false" />
+                            :isTest="false" :stop="false"/>
                     </v-col>
                 </v-row>
                 <v-row>
@@ -251,7 +251,7 @@
                                 <div class="tw-mb-4">
                                     <ModelMachineViewer v-if="machine.object.length > 0"
                                         :modelUrl="`https://industrial-render-api.onrender.com${machine.object[0]?.url}`" :danger="danger"
-                                        :isTest="true" />
+                                        :isTest="true" :initTest="initTest" :rpm="rpmTest" :stop="stop"/>
                                 </div>
                                 <div class="tw-flex tw-flex-col tw-gap-2 tw-w-full">
                                     <div class="tw-w-full">
@@ -453,10 +453,14 @@ const openDrawerDisassemble = () => {
 
 const danger = ref<boolean>(false);
 
-const test = (number: number, type: string) => {
-    console.log('Testing', number, type);
-    console.log('Machine limits:', machine.value.limits);
+const initTest = ref<boolean | undefined>(undefined);
+const rpmTest = ref<number>(0);
+const stop = ref<boolean>(false);
 
+const test = (number: number, type: string) => {
+    initTest.value = true;
+    rpmTest.value = number;
+    stop.value = false;
     if (type === 'rotations') {
         console.log('Checking rotations limit');
         const rotationsLimit = machine.value.limits.find((limit: any) => limit.variables_of_consumption.variable === 'rotations');

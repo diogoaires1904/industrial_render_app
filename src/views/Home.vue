@@ -2,8 +2,8 @@
     <Navbar v-if="showNavbar" />
     <v-main class="tw-bg-white" :class="{
         'tw-pl-1': isMobile,
-        'tw-pl-20': layout.drawer && !layout.mini,
-        'tw-pl-52': layout.drawer && layout.mini
+        'tw-pl-20': !isMobile && layout.drawer && !layout.mini,
+        'tw-pl-52': !isMobile && layout.drawer && layout.mini
     }">
         <Suspense>
             <router-view />

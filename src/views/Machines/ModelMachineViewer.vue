@@ -12,9 +12,14 @@ interface Props {
     modelUrl: string
     isTest: boolean
     danger: boolean
+    initTest?: boolean
+    rpm?: number
+    stop: boolean
 }
 
 const props = defineProps<Props>()
+
+console.log('Props:', props);
 
 const modelUrl = props.modelUrl
 const canvasContainer = ref<HTMLDivElement | null>(null)
@@ -154,7 +159,15 @@ onMounted(() => {
             });
         }
 
-        if (roldanaPivot) roldanaPivot.rotation.x += 1;
+        if (roldanaPivot && props.isTest && props.initTest !== null){ 
+            console.log('primeiro teste')
+            roldanaPivot.rotation.x += 0;
+        }
+        else if (roldanaPivot && props.isTest && props.initTest == true && props.rpm && props.stop == false) {
+            console.log('segundo teste')
+            roldanaPivot.rotation.x += (props.rpm / 60) * Math.PI / 100;
+        }
+        else if (roldanaPivot && props.isTest && props.initTest && props.stop == true) roldanaPivot.rotation.x += 0;
 
         controls.update()
         renderer.render(scene, camera)

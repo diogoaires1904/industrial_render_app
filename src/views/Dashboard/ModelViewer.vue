@@ -152,7 +152,7 @@ onMounted(() => {
             controls.enableDamping = true
 
             // autorotate
-            controls.autoRotate = true     
+            controls.autoRotate = false     
             controls.autoRotateSpeed = 1.0
             controls.update()
         },
