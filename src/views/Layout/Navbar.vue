@@ -35,7 +35,7 @@
                 <v-list density="compact" nav>
                     <v-list-item to="/profile" link>
                         <div v-if="!layout.mini" class="tw-w-10">
-                            <v-icon :icon="me?.picture ? 'mdi-account' : 'mdi-account-outline'" class="tw-mr-2"/>
+                            <v-icon :icon="me?.picture ? 'mdi-account' : 'mdi-account-outline'" class="tw-mr-2" />
                         </div>
                         <v-list-item-title v-if="layout.mini" class="tw-text-md tw-flex tw-items-center tw-gap-2">
                             <div class="tw-w-12">

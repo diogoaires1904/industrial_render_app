@@ -152,20 +152,18 @@ onMounted(() => {
                 if ((child as THREE.Mesh).isMesh) {
                     const mesh = child as THREE.Mesh;
                     const material = mesh.material as THREE.MeshStandardMaterial;
-                    const baseColor = new THREE.Color(0x4a4a4a);
+                    const baseColor = new THREE.Color(0xaaaaaa);
                     const dangerColor = new THREE.Color(0xff0000);
                     material.color.copy(baseColor).lerp(dangerColor, blink);
                 }
             });
         }
 
-        if (roldanaPivot && props.isTest && props.initTest !== null){ 
-            console.log('primeiro teste')
-            roldanaPivot.rotation.x += 0;
+        if (roldanaPivot && !props.isTest && props.initTest !== null){ 
+            roldanaPivot.rotation.x += 0.09;
         }
         else if (roldanaPivot && props.isTest && props.initTest == true && props.rpm && props.stop == false) {
-            console.log('segundo teste')
-            roldanaPivot.rotation.x += (props.rpm / 60) * Math.PI / 100;
+            roldanaPivot.rotation.x += props.rpm / 8000 ;
         }
         else if (roldanaPivot && props.isTest && props.initTest && props.stop == true) roldanaPivot.rotation.x += 0;
 
